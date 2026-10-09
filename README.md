@@ -18,7 +18,6 @@ The project prioritizes simplicity, reliability, maintainability, and useful fun
 * [Project Goals](#project-goals)
 * [Getting Started](#getting-started)
 * [Available Commands](#available-commands)
-* [Understanding the Tree Command](#understanding-the-tree-command)
 * [Project Structure](#project-structure)
 * [How Veyra Works](#how-veyra-works)
 * [Current Limitations](#current-limitations)
@@ -54,49 +53,27 @@ New commands should provide a clear benefit, such as simplifying a workflow, pre
 
 ### Installation
 
-Download `veyra_cli.exe` from the project's [GitHub Releases](https://github.com/xjly1/veyra_cli/releases) page when a release is available.
+For installation instructions, see [`HowToInstall.md`](HowToInstall.md).
 
-Place the executable in a directory of your choice.
-
-To run Veyra from any directory in PowerShell or Command Prompt, add the directory containing the executable to your user `PATH`. Open a new terminal after updating `PATH`.
-
-Verify the executable:
-
-```powershell
-.\veyra_cli.exe --version
-```
-
-Expected output:
-
-```text
-Veyra v1.0.0
-```
-
-If the executable's directory is already in `PATH`, you can invoke it by its filename:
-
-```powershell
-veyra_cli.exe --version
-```
-
-The compiled executable does not require Rust or Cargo to be installed on the end user's machine.
+The guide explains how to download and run the PowerShell installer, install Veyra CLI, configure the user `PATH`, and verify the installation.
 
 ### Running Veyra
 
 The general command syntax is:
 
 ```text
-veyra_cli.exe <command> [options]
+veyra <command> [options]
 ```
 
 Examples:
 
 ```powershell
-veyra_cli.exe help
-veyra_cli.exe version
-veyra_cli.exe tree
+veyra help
+veyra version
+veyra tree
 ```
 
-The executable is named `veyra_cli.exe`. All examples in this document use that filename.
+The official command name is `veyra`. The executable is named `veyra.exe`.
 
 ## Available Commands
 
@@ -107,24 +84,24 @@ Veyra CLI `v1.0.0` provides the following commands and options.
 Displays information about the available Veyra commands.
 
 ```powershell
-veyra_cli.exe help
+veyra help
 ```
 
-The command descriptions are maintained as Markdown files in `src/help/` and embedded into the executable during compilation.
+Command descriptions are maintained as Markdown files in `src/help/` and embedded into the executable during compilation.
 
 ### 2. Version
 
 Displays the current Veyra version.
 
 ```powershell
-veyra_cli.exe version
+veyra version
 ```
 
 Version information can also be displayed using either of these flags:
 
 ```powershell
-veyra_cli.exe -v
-veyra_cli.exe --version
+veyra -v
+veyra --version
 ```
 
 Both flags display the version information.
@@ -133,12 +110,12 @@ Both flags display the version information.
 
 Displays a structured representation of the current working directory.
 
-The Tree command supports three usage modes: directory-only output, full filesystem structure, and saving the structure to a Markdown file.
+The Tree command supports directory-only output, full filesystem structure, and saving the structure to a Markdown file.
 
 #### Default mode
 
 ```powershell
-veyra_cli.exe tree
+veyra tree
 ```
 
 Displays directories only. Files are excluded from the output.
@@ -155,7 +132,7 @@ Example:
 #### Full structure: `-f`
 
 ```powershell
-veyra_cli.exe tree -f
+veyra tree -f
 ```
 
 Displays both directories and files.
@@ -174,7 +151,7 @@ Example:
 #### Save structure: `-s`
 
 ```powershell
-veyra_cli.exe tree -s
+veyra tree -s
 ```
 
 Saves the directory structure to a Markdown file named:
@@ -190,13 +167,13 @@ Instead of printing the complete structure to the terminal, Veyra writes it to t
 #### Combine `-f` and `-s`
 
 ```powershell
-veyra_cli.exe tree -f -s
+veyra tree -f -s
 ```
 
 Or:
 
 ```powershell
-veyra_cli.exe tree -s -f
+veyra tree -s -f
 ```
 
 Both forms produce the same result.
@@ -207,13 +184,13 @@ The order of these two options does not change the intended behavior.
 
 ### Tree Command Summary
 
-| Command                    | Behavior                                      |
-| -------------------------- | --------------------------------------------- |
-| `veyra_cli.exe tree`       | Display directories only in the terminal      |
-| `veyra_cli.exe tree -f`    | Display directories and files in the terminal |
-| `veyra_cli.exe tree -s`    | Save the directory-only structure to Markdown |
-| `veyra_cli.exe tree -f -s` | Save directories and files to Markdown        |
-| `veyra_cli.exe tree -s -f` | Same behavior as `-f -s`                      |
+| Command            | Behavior                                      |
+| ------------------ | --------------------------------------------- |
+| `veyra tree`       | Display directories only in the terminal      |
+| `veyra tree -f`    | Display directories and files in the terminal |
+| `veyra tree -s`    | Save the directory-only structure to Markdown |
+| `veyra tree -f -s` | Save directories and files to Markdown        |
+| `veyra tree -s -f` | Same behavior as `-f -s`                      |
 
 #### Filtering
 
@@ -244,6 +221,8 @@ veyra_cli/
 ├── Cargo.lock
 ├── LICENSE
 ├── README.md
+├── HowToInstall.md
+├── install.ps1
 └── .gitignore
 ```
 
@@ -304,7 +283,17 @@ Contains the project's license terms. Veyra CLI is distributed under GNU GPL ver
 
 ### `README.md`
 
-Provides the project's introduction, installation instructions, command reference, architecture overview, and licensing information.
+Provides the project's introduction, command reference, architecture overview, development instructions, and licensing information. Installation instructions are maintained separately in `HowToInstall.md`.
+
+### `HowToInstall.md`
+
+Provides step-by-step instructions for downloading and running the installer, installing Veyra CLI, and verifying the installation.
+
+### `install.ps1`
+
+The PowerShell installation script. It is intended to download the published `veyra.exe`, place it in `C:\Veyra`, and add that directory to the user's `PATH`.
+
+The installer depends on a published GitHub Release containing the executable at the download URL configured in the script.
 
 ### `.gitignore`
 
@@ -386,7 +375,7 @@ cargo build --release
 The release executable is generated in:
 
 ```text
-target/release/veyra_cli.exe
+target/release/veyra.exe
 ```
 
 The executable name is defined by the package configuration in `Cargo.toml`.
@@ -394,9 +383,9 @@ The executable name is defined by the package configuration in `Cargo.toml`.
 ### Run locally
 
 ```powershell
-.\target\release\veyra_cli.exe help
-.\target\release\veyra_cli.exe --version
-.\target\release\veyra_cli.exe tree
+.\target\release\veyra.exe help
+.\target\release\veyra.exe --version
+.\target\release\veyra.exe tree
 ```
 
 ### Adding help documentation
@@ -412,7 +401,7 @@ The embedded help assets are updated at compilation time. No separate runtime do
 
 ## License
 
-Veyra CLI is licensed under the **GNU General Public License v3.0 only (`GPL-3.0-only`)**. See the [`LICENSE`](LICENSE) file for the complete license text.
+Veyra CLI is licensed under the **GNU General Public License v3.0 only (`GPL-3.0-only`)**. See the [`LICENSE`](https://github.com/xjly1/veyra_cli/blob/main/LICENSE) file for the complete license text.
 
 You may use, study, copy, modify, and redistribute this project in accordance with the license terms.
 
@@ -420,7 +409,7 @@ If you redistribute Veyra CLI or a modified version, you must comply with the ap
 
 You may use or distribute the project commercially, provided you comply with the license.
 
-Please preserve the original copyright and license notices when reusing the project, and clearly identify your modifications where required by the license.
+Please preserve the original copyright and license notices when reusing the project, and clearly identify your modifications where required by the GPL.
 
 ---
 
