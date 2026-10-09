@@ -53,6 +53,11 @@ New commands should provide a clear benefit, such as simplifying a workflow, pre
 
 ### Installation
 
+For installation instructions, see [`HowToInstall.md`](HowToInstall.md).
+
+The guide explains how to download and run the PowerShell installer, install Veyra CLI, configure the user `PATH`, and verify the installation.
+
+=======
 Download `veyra.exe` from the project's [GitHub Releases](https://github.com/xjly1/veyra_cli/releases) page when a release is available.
 
 Place the executable in a directory of your choice.
@@ -78,6 +83,7 @@ If the executable is not in a directory listed in `PATH`, run it from its contai
 ```
 
 The compiled executable does not require Rust or Cargo to be installed on the end user's machine.
+>>>>>>> origin/main
 
 ### Running Veyra
 
@@ -109,7 +115,7 @@ Displays information about the available Veyra commands.
 veyra help
 ```
 
-The command descriptions are maintained as Markdown files in `src/help/` and embedded into the executable during compilation.
+Command descriptions are maintained as Markdown files in `src/help/` and embedded into the executable during compilation.
 
 ### 2. Version
 
@@ -243,6 +249,8 @@ veyra_cli/
 ├── Cargo.lock
 ├── LICENSE
 ├── README.md
+├── HowToInstall.md
+├── install.ps1
 └── .gitignore
 ```
 
@@ -303,7 +311,17 @@ Contains the project's license terms. Veyra CLI is distributed under GNU GPL ver
 
 ### `README.md`
 
-Provides the project's introduction, installation instructions, command reference, architecture overview, and licensing information.
+Provides the project's introduction, command reference, architecture overview, development instructions, and licensing information. Installation instructions are maintained separately in `HowToInstall.md`.
+
+### `HowToInstall.md`
+
+Provides step-by-step instructions for downloading and running the installer, installing Veyra CLI, and verifying the installation.
+
+### `install.ps1`
+
+The PowerShell installation script. It is intended to download the published `veyra.exe`, place it in `C:\Veyra`, and add that directory to the user's `PATH`.
+
+The installer depends on a published GitHub Release containing the executable at the download URL configured in the script.
 
 ### `.gitignore`
 
@@ -419,7 +437,7 @@ If you redistribute Veyra CLI or a modified version, you must comply with the ap
 
 You may use or distribute the project commercially, provided you comply with the license.
 
-Please preserve the original copyright and license notices when reusing the project, and clearly identify your modifications where required by the license.
+Please preserve the original copyright and license notices when reusing the project, and clearly identify your modifications where required by the GPL.
 
 ---
 
