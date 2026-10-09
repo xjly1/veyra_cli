@@ -57,6 +57,34 @@ For installation instructions, see [`HowToInstall.md`](HowToInstall.md).
 
 The guide explains how to download and run the PowerShell installer, install Veyra CLI, configure the user `PATH`, and verify the installation.
 
+=======
+Download `veyra.exe` from the project's [GitHub Releases](https://github.com/xjly1/veyra_cli/releases) page when a release is available.
+
+Place the executable in a directory of your choice.
+
+To run Veyra from any directory in PowerShell or Command Prompt, add the directory containing `veyra.exe` to your user `PATH`. Open a new terminal after updating `PATH`.
+
+Verify the installation:
+
+```powershell
+veyra --version
+```
+
+Expected output:
+
+```text
+Veyra v1.0.0
+```
+
+If the executable is not in a directory listed in `PATH`, run it from its containing directory:
+
+```powershell
+.\veyra.exe --version
+```
+
+The compiled executable does not require Rust or Cargo to be installed on the end user's machine.
+>>>>>>> origin/main
+
 ### Running Veyra
 
 The general command syntax is:
