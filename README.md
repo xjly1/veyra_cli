@@ -57,7 +57,7 @@ For installation instructions, see [`HowToInstall.md`](HowToInstall.md).
 
 The guide explains how to download and run the PowerShell installer, install Veyra CLI, configure the user `PATH`, and verify the installation.
 
-=======
+
 Download `veyra.exe` from the project's [GitHub Releases](https://github.com/xjly1/veyra_cli/releases) page when a release is available.
 
 Place the executable in a directory of your choice.
