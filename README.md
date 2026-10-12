@@ -83,7 +83,6 @@ If the executable is not in a directory listed in `PATH`, run it from its contai
 ```
 
 The compiled executable does not require Rust or Cargo to be installed on the end user's machine.
->>>>>>> origin/main
 
 ### Running Veyra
 
@@ -97,7 +96,7 @@ Examples:
 
 ```powershell
 veyra help
-veyra version
+veyra --version
 veyra tree
 ```
 
@@ -120,10 +119,6 @@ Command descriptions are maintained as Markdown files in `src/help/` and embedde
 ### 2. Version
 
 Displays the current Veyra version.
-
-```powershell
-veyra version
-```
 
 Version information can also be displayed using either of these flags:
 
